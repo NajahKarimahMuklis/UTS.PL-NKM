@@ -16,7 +16,7 @@ public class Main {
             while ((line = reader.readLine()) != null) {
 
                 if (!headerSkipped) {
-                    // Lewati baris pertama (header)
+
                     headerSkipped = true;
                     continue;
                 }
@@ -27,27 +27,28 @@ public class Main {
                     double atas = Double.parseDouble(row[1]);
                     double tinggi = Double.parseDouble(row[2]);
 
-                    // Buat objek Trapesium baru dan tambahkan ke dalam list
+
                     Trapesium trapesium = new Trapesium();
                     trapesium.bawah = bawah;
                     trapesium.atas = atas;
                     trapesium.tinggi = tinggi;
                     dataTrapezoid.add(trapesium);
                 } else {
-                    // Kasus jika jumlah nilai dalam baris tidak sesuai
+
                     System.out.println("Format data tidak valid: " + line);
                 }
             }
 
-
             LuasT luasT = new LuasT();
-
+            KelilingT kelilingT = new KelilingT();
 
             for (Trapesium trapesium : dataTrapezoid) {
 
                 double luasTrapesium = luasT.Luas(trapesium);
+                double kelilingTrapesium = kelilingT.Keliling(trapesium);
 
                 System.out.println("Luas trapesium dengan sisi bawah " + trapesium.bawah + ", sisi atas " + trapesium.atas + ", dan tinggi " + trapesium.tinggi + " adalah: " + luasTrapesium);
+                System.out.println("Keliling trapesium dengan sisi bawah " + trapesium.bawah + ", sisi atas " + trapesium.atas + ", dan tinggi " + trapesium.tinggi + " adalah: " + kelilingTrapesium);
             }
         } catch (Exception e) {
             System.out.println("Error saat membaca file " + e.getMessage());
